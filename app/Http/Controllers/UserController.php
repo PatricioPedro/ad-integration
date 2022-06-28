@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Adldap\AdldapInterface;
 
+
 use App\Http\Interfaces\User\IUserLogonHourFormat;
 
 use Illuminate\Http\Request;
@@ -18,15 +19,22 @@ class UserController extends Controller
         $this -> formatHour = $formatHour;
     }
 
-
     public function updateUserLogonsHours (Request $request) {
 
          $user = $this->ldap->search()->users()->find($request -> user);
 
-        return response() -> json([
-            "user" =>$user,
-            "sucess" => true
-        ]);
+        $formatlogonhours = $this -> formatHour -> getFormat(8, 18, 1, 7);
+         $user -> logonhours = $formatlogonhours;
+          $user -> save();
+
+         return response() -> json([
+            "user" => $user
+         ]);
+
+    
+
+      
+         
     }
 
 

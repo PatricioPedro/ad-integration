@@ -156,7 +156,7 @@ return [
                 |
                 */
 
-                'port' => env('LDAP_PORT', 389),
+                'port' => env('LDAP_PORT', 636),
 
                 /*
                 |--------------------------------------------------------------------------
@@ -231,10 +231,15 @@ return [
                 | One of these options are definitely recommended if you
                 | have the ability to connect to your server securely.
                 |
-                */
+                */ 
 
                 'use_ssl' => env('LDAP_USE_SSL', false),
-                'use_tls' => env('LDAP_USE_TLS', false),
+                'use_tls' => env('LDAP_USE_TLS', true),
+                'custom_options' => [
+                    // See: http://php.net/ldap_set_option
+                    // LDAP_OPT_X_TLS_REQUIRE_CERT => LDAP_OPT_X_TLS_NEVER
+                    LDAP_OPT_X_TLS_REQUIRE_CERT => LDAP_OPT_X_TLS_NEVER
+                ]
 
             ],
 

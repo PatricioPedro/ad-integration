@@ -9,10 +9,10 @@ use App\Exceptions\IntervalHourDayWeekException;
 class UserLogonHour implements IUserLogonHourFormat{
 
 
-  function getFormat(int $startTime, int $endTime, int $startDayWeek, int $endDayWeekend): array
+  function getFormat(int $startTime, int $endTime, int $startDayWeek, int $endDayWeekend)
   {
 
-        if (($startTime>=1 && $startTime <= 24) && ($startDayWeek>=1 && $endDayWeekend <= 7)) {
+        if (!($startTime>=1 && $startTime <= 24) && ($startDayWeek>=1 && $endDayWeekend <= 7)) {
              throw new IntervalHourDayWeekException;
         }
             $logon_hours = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
@@ -41,7 +41,7 @@ class UserLogonHour implements IUserLogonHourFormat{
         
             }
         
-            return $logon_hours;
+            return $logon_hours[0];
   }
 
 }

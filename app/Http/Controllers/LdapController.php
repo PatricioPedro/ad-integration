@@ -18,7 +18,6 @@ class LdapController extends Controller
      
            $aux[$i]='1';
      
-     
         }
       
         $first_array = bindec(mb_substr($aux,0,8));
