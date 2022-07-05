@@ -233,11 +233,10 @@ return [
                 |
                 */ 
 
-                'use_ssl' => env('LDAP_USE_SSL', false),
-                'use_tls' => env('LDAP_USE_TLS', true),
+                'use_ssl' => env('LDAP_USE_SSL', true),
+                'use_tls' => env('LDAP_USE_TLS', false),
                 'custom_options' => [
                     // See: http://php.net/ldap_set_option
-                    // LDAP_OPT_X_TLS_REQUIRE_CERT => LDAP_OPT_X_TLS_NEVER
                     LDAP_OPT_X_TLS_REQUIRE_CERT => LDAP_OPT_X_TLS_NEVER
                 ]
 

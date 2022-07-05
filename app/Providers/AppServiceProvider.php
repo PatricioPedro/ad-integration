@@ -4,7 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Http\Interfaces\User\IUserLogonHourFormat;
-use App\Application\User\UserLogonHour;
+use App\Http\Interfaces\User\IUserBytesHours;
+use App\Http\Interfaces\User\IUserLdap;
+use App\Application\User\UserLongonHoursFormat;
+use App\Application\User\UserBytesHours;
+use App\Application\User\UserLdap;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
 
     public $bindings = [
-        IUserLogonHourFormat::class => UserLogonHour::class,
+        IUserBytesHours::class => UserBytesHours::class,
+        IUserLogonHourFormat::class => UserLongonHoursFormat::class,
+        IUserLdap::class => UserLdap::class,
     ];
  
     public function register()
