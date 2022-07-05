@@ -14,13 +14,17 @@ class UserBytesHours implements IUserBytesHours
   {
     $logon_hours = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-    if ($startDayWeek >= $endDayWeekend || $startTime >= $endTime) {
+    if ($startDayWeek >= $endDayWeekend || $startTime > $endTime) {
       throw new InverseIntervalDateException;
     }
 
     if (($startTime < 0 || $endTime > 23) || ($startDayWeek < 1 || $endDayWeekend > 7 ) ) {
       
       throw new InvalidIntervalDateException;
+    }
+
+    if($endTime === 0) {
+       return $logon_hours;
     }
     
     $aux = '000000000000000000000000';
