@@ -25,7 +25,9 @@ class UserBytesHours implements IUserBytesHours
     
     $aux = '000000000000000000000000';
 
-    for ($i = $startTime + 3; $i <= $endTime + 2; $i++) {
+    $endTime = $endTime <20  ? $endTime + 2 : $endTime;
+
+    for ($i = $startTime + 3; $i <= $endTime; $i++) {
       $aux[$i] = '1';
     }
 
