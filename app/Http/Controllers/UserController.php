@@ -51,7 +51,6 @@ class UserController extends Controller
 
             return response()->json([
                 "success" => true,
-                "user" => $user,
                 "message" => "Horas de logon do usuário $request->user alterado com sucesso!"
             ]);
         } catch (UserLDAPNotFoundException $ex) {
